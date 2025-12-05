@@ -38,20 +38,12 @@ section .text
 	extern asmfunc_u16
 	extern strlen
 	extern println
-	global main
+	global _start
 
-main:
-	mov rax, 1; 				sys_call write
-	mov rdi, 1; 				вывод в терминал
-	mov rsi, enter_type;		сообщение
-	mov rdx, enter_type_len; 	длина сообщения
-	syscall
-
+_start:
 	mov rdi, enter_type;
-	call strlen
 	call println
 
-	mov rax, 0;					успешный выход из программы
-	ret
-
-	
+	mov rax, 60
+	xor rdi, rdi
+	syscall

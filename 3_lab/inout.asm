@@ -27,16 +27,18 @@ push rdi
 push rsi
 push r11
 
-call strlen						; rax - длина строки
+call strlen					; rax - длина строки
 
 mov rdx, rax					; длина
-mor rsi, rdi					; адрес
-mov rax, 1 						; sys_write
-mov rdi, r11					; stdout
+mov rsi, rdi					; адрес
+mov rax, 1 					; sys_write
+mov rdi, 1					; stdout
 syscall
 
-pop rax
-pop rdx
-pop rdi
-pop rsi
 pop r11
+pop rsi
+pop rdi
+pop rdx
+pop rax
+
+ret
